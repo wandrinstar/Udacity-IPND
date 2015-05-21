@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div><a href="/">Home</a></div>
+
+{% if next_path %}
+    {{ '<div><a href="%s">Next</a></div>' |safe %next_path }}
+{% else %}
+    {{ '<br>'|safe }}
+{% endif %}
+
+{% if previous_path %}
+    {{ '<div><a href="%s">Previous</a></div>' |safe %previous_path }}
+{% else %}
+    {{ '<br>'|safe }}
+{% endif %}
+
+
+{{ get_stage_html(stage_notes)|safe }}
+
+{% endblock %}

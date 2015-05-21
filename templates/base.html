@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>Intro to Programming</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+
+	<body>
+		<h1>Intro to Programming Notes</h1>
+
+		{% block content %}
+		{% endblock %}
+
+        <form method="post">
+          <div><textarea name="comment" rows="5" cols="50"></textarea></div>
+          <div><input type="submit" value="What do you think?"></div>
+        </form>
+
+        <h1 id="comments">User Comments</h1>
+        <ol>
+            {% for c in user_comments %}
+                <font color="orange"><li>{{c.content}}</li></font>
+                <br>
+            {% endfor %}
+        </ol>
+
+	</body>
+
+
+	
+</html>
