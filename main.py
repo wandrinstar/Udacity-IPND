@@ -17,7 +17,6 @@
 import os
 import webapp2
 import jinja2
-import cgi
 from google.appengine.ext import ndb
 from html_generator import get_stage_html
 from notes import all_stages
@@ -43,7 +42,7 @@ class Handler(webapp2.RequestHandler):
     def render_page(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
-    def show_page(self, template, stage_notes=None, stage_num=None, path='/'):
+    def show_page(self, template, comment_msg='', stage_notes=None, stage_num=None, path='/'):
         cursor = Comment.query(Comment.stage==stage_num).order(-Comment.date)
         user_comments = cursor.fetch()
 
@@ -58,19 +57,24 @@ class Handler(webapp2.RequestHandler):
             next_path = None
             previous_path = None
 
-        self.render_page(template, stage_notes=stage_notes, user_comments=user_comments,  previous_path=previous_path, next_path=next_path)
+        self.render_page(template, stage_notes=stage_notes, user_comments=user_comments,  previous_path=previous_path, next_path=next_path, comment_msg=comment_msg)
 
     def post_comment(self, template, stage_num=None, path='/'):
-        content = cgi.escape(self.request.get('comment'), quote=True)
-        self.comment = Comment(content=content, stage=stage_num)
+        content = self.request.get('comment')
+        comment_msg = ''
         if content:
+            self.comment = Comment(content=content, stage=stage_num)
             self.comment.put()
-        path += '#comments'
+            comment_msg += "Success: Your comment has been posted!"
+        else:
+            comment_msg += "Error: Blank comments are not accepted."
+        path +='?'+ 'msg' + '=' + comment_msg + '#comments'
         self.redirect(path)
-
+        
 class Home(Handler):
     def get(self):
-        self.show_page('home.html')
+        comment_msg = self.request.get('msg')
+        self.show_page('home.html', comment_msg)
 
     def post(self):
         self.post_comment('home.html')
@@ -78,9 +82,10 @@ class Home(Handler):
 class Stage(Handler):
 
     def get(self):
+        comment_msg = self.request.get('msg')
         path = self.request.path
         stage_num = int(path[-1])
-        self.show_page('stage.html', all_stages[stage_num], stage_num, path)
+        self.show_page('stage.html', comment_msg, all_stages[stage_num], stage_num, path)
 
     def post(self):
         path = self.request.path

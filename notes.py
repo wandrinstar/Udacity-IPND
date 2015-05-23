@@ -1,3 +1,5 @@
+# data structure of each stage list: [stage title, [section0_title, [section0_bullet0, section0_bullet1, ...]], [section1], ...]
+
 stage0 = ['Stage 0: Basics of Web and HTML',
     [['WWW (World Wide Web)', ['Collection of mainly HTML docs.']],
     ['HTML Components', ['Text content is what you see.',
@@ -174,13 +176,15 @@ stage4 = ["Stage 4: Full Stack",
                                  ]
             ],
 
-           ["Validation", ["User can send junk, even if you are using something like checkboxes, so server has to know how to handle these parameters",
-                           "Escape quote, amper, less than, greater than symbols.",
-                           "Better to use built in functions than to create (eg cgi module) your own."
+           ["Validation", ["If you allow POSTs (eg forms) user can send html code to manipulate your website.",
+                           "Even when using HTML elements with built-in limitations(eg checkboxes) user can still send junk.",
+                           "Server must escape 4 dangerous symbols: 1) quote 2) amper 3) less than 4) greater than.",
+                           "Better to use built in escape functions(eg templates or cgi module) than to create your own.,"
                            ]
             ],
 
-           ["Jinja Template", ["Templates are libraries for creating complex strings (usually HTML) because it's hard to do this with Python.",
+           ["Jinja Template", ["Templates are libraries for creating complex strings (usually HTML) which are hard to do with Python.",
+                               "Templates also help you avoid repitition by facilitating string substitution.",
                                "Jinja2 is a template that is built into google app engine",
                                "Add library to yaml and import python module (if something is wrong with python, page will not load; check errors in log console.",
                                "Jinja2 allows you to insert python snippets into regular html.",

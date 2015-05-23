@@ -5,13 +5,20 @@
 	box-sizing: border-box;	
 }
 
+img {
+    position: absolute;
+    right: 100px;
+    top: 70px;
+    z-index: -1;
+}
+
 body {
 	background-color: yellow;
 	margin:50px;
 }
 
 h1 {
-	color: lime;
+	color: orange;
 
 }
 
