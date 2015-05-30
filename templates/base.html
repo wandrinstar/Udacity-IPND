@@ -9,7 +9,7 @@
 
 	<body>
         <div>
-		    <h1>Front End Nanodegree</h1>
+		    <h1>Introduction to Programming Nanodegree</h1>
             <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Udacity_Logo.svg/939px-Udacity_Logo.svg.png" alt="Udacity Logo" style="width:100px;height:75px" position righ>
         </div>
 
@@ -28,9 +28,9 @@
 
         <div>
             {% if comment_msg[0]== 'E' %}
-                <font color="red" size ='5'>{{ comment_msg }}</font>
-            {% else %}
-                <font color="blue" size ='5'>{{ comment_msg }}</font>
+                <font color="red" size ='5'>Sorry, no blank comments allowed.</font>
+            {% elif comment_msg[0] == 'S' %}
+                <font color="blue" size ='5'>Your comment has been posted!</font>
             {% endif %}
 
             <h1>Comments</h1>

@@ -176,15 +176,16 @@ stage4 = ["Stage 4: Full Stack",
                                  ]
             ],
 
-           ["Validation", ["If you allow POSTs (eg forms) user can send html code to manipulate your website.",
-                           "Even when using HTML elements with built-in limitations(eg checkboxes) user can still send junk.",
-                           "Server must escape 4 dangerous symbols: 1) quote 2) amper 3) less than 4) greater than.",
-                           "Better to use built in escape functions(eg templates or cgi module) than to create your own.,"
+           ["Validation", ["When allowing POSTs, user may enter blank fields or incorrect data (eg March 41).",
+                           "Anticipate user errors by checking for things like blanks, out of range data, spelling mistakes. Either correct them or send  error messages to improve user experience.",
+                           "Worse, user can send HTML code to manipulate your website; even when using HTML elements with built-in limitations(eg checkboxes) user can still send junk.",
+                           "Server must escape 4 dangerous symbols to maintain site security: 1) quote 2) amper 3) less than 4) greater than.",
+                           "Better to use built in escape functions (eg templates or cgi module) than to create your own.,"
                            ]
             ],
 
            ["Jinja Template", ["Templates are libraries for creating complex strings (usually HTML) which are hard to do with Python.",
-                               "Templates also help you avoid repitition by facilitating string substitution.",
+                               "Templates also help you avoid repetition by facilitating string substitution.",
                                "Jinja2 is a template that is built into google app engine",
                                "Add library to yaml and import python module (if something is wrong with python, page will not load; check errors in log console.",
                                "Jinja2 allows you to insert python snippets into regular html.",

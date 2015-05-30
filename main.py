@@ -47,8 +47,8 @@ class Handler(webapp2.RequestHandler):
         user_comments = cursor.fetch()
 
         if stage_num is not None:
-            previous_path = path[0:-1] + str(stage_num-1)
-            next_path = path[0:-1] + str(stage_num+1)
+            previous_path = path[:-1] + str(stage_num-1)
+            next_path = path[:-1] + str(stage_num+1)
             if stage_num < 1:
                 previous_path = None
             if stage_num > len(all_stages)-2:
@@ -65,9 +65,9 @@ class Handler(webapp2.RequestHandler):
         if content:
             self.comment = Comment(content=content, stage=stage_num)
             self.comment.put()
-            comment_msg += "Success: Your comment has been posted!"
+            comment_msg += "Success"
         else:
-            comment_msg += "Error: Blank comments are not accepted."
+            comment_msg += "Error"
         path +='?'+ 'msg' + '=' + comment_msg + '#comments'
         self.redirect(path)
         
