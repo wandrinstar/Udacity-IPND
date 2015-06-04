@@ -21,16 +21,38 @@ def get_stage_html(stage_list):
     html_1 = '<div class="stage">\n<h1>' + stage_list[0] + '</h1>\n'
     html_2 = ''
     for section in stage_list[1]:
-        title = '<h4>' + section[0] + '</h4>'
+        title = '<h3>' + section[0] + '</h3>'
         bullets = section[1]
         html_2 += '\n' + get_section_html(title, bullets)
     return html_1 + html_2
 
-# Not actually used in this app because we will only generate one stage at a time
-# return html string for all stages
+# Helper function for get_recursive_stage
 
-def get_all_html():
-    html = ''
-    for stage in all_stages:
-        html += "\n" + get_stage_html(stage) + "\n</div>\n\n\n"
+def recursive(mylist, spaces = ''):
+    if not any(isinstance(e, list) for e in mylist): # If no more lists inside any element of list, create the ul.
+        html_ul = '<ul>' + '\n' + spaces
+        for e in mylist:
+            html_ul += '<li>' + e + '</li>'
+        return html_ul + '\n' + spaces + '</ul>'
+    else:
+        spaces += '    '
+        html = '<ul>'
+        for e in mylist:
+            if isinstance(e, str): # There are lists but string element is the parent bullet.
+                html += '<li>' + e + '</li>'
+            else:
+                html += '\n' + spaces + recursive(e, spaces)
+        return html + '</ul>'
+
+# Call this to generate recurisve notes for stage on the fly.
+# Allows inite number of nested unordered lists.
+# Use with new data structure, ie stage5 and higher.
+
+def get_recursive_stage(stage_dict):
+    html = '<div class="stage"><h1>' + stage_dict['title'] + '</h1>'
+    for e in stage_dict['sections']:
+        sec_title = '<h3>' + e['sec_title'] + '</h3>'
+        sec_notes = recursive(e['notes'])
+        html += '<div class="section">\n' + sec_title + '\n' + sec_notes + '\n</div>'
+    html+= '\n</div>'
     return html

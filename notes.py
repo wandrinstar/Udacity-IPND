@@ -225,4 +225,38 @@ stage4 = ["Stage 4: Full Stack",
         ]
 ]
 
-all_stages = [stage0, stage1, stage2, stage3, stage4]
+
+
+stage5 = {'title': 'Countries',
+                   'sections':[
+                       {'sec_title': 'China', 'notes': ['China has many people.',
+                                                        'China is ancient', ['Oldest country on earth'],
+                                                        'Nobody knows where China ends and begins', ['Hong Kong',
+                                                                                                     'Macau', ['Cool gambling city'],
+                                                                                                     'Taiwan', ['Founded by Kuomintang', ['Chiang Kai-Shek', ['Leader of the losing side in the Civil War',
+                                                                                                                                                              'Died 1975']
+                                                                                                                                          ],
+                                                                                                                'Claims to be the real China'
+                                                                                                                ],
+                                                                                                     'Spratlys']
+                                                        ]},
+                       {'sec_title': 'Argentina', 'notes':[ 'This is a country in the Southern Cone', ['It borders Chile, Uruguay, Paraguay, and Brazil'],
+                                                            'Many football players come from Argentina', ['Maradona', 'Batistuta','Messi'],
+                                                            'Lost Falkland Islands/Malvinas war to the UK'
+                                                            ]
+                        },
+                       {'sec_title': 'France', 'notes': ['Napoleon', ['Famous General', 'Invaded Russia', 'Defeated at Waterloo'], 'de Gaulle', 'etc']},
+                       {'sec_title': 'USA', 'notes':['They hate us for our freedom country', ['Author: famous American poet']] }
+                   ]
+                   }
+
+stage6 = {'title': 'Earth Lifeforms',
+                   'sections':[
+                       {'sec_title': 'mammals', 'notes': ['canines', ['dogs', ['husky', 'bulldog']], 'felines', ['lions'], 'rodents', ['mice', 'hamsters']]},
+                       {'sec_title': 'fish', 'notes':['goldfish', 'sharks']},
+                       {'sec_title': 'reptiles', 'notes': [ 'lizards',['salamander', 'gecko'], 'crocodiles and alligators', 'snakes', ['cobra']]},
+                       {'sec_title': 'amphibians', 'notes':['frogs'] }
+                   ]
+                   }
+
+all_stages = [stage0, stage1, stage2, stage3, stage4, stage5, stage6]

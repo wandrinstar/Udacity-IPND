@@ -9,12 +9,17 @@
     {{ '<br>'|safe }}
 {% endif %}
 
-{% if previous_path %}
-    {{ '<div><a href="%s">Previous</a></div>' |safe %previous_path }}
-{% else %}
+{% if previous_path[-2:] == "-1" %} {# not using None anymore cause later on use previous_path for comparison #}
     {{ '<br>'|safe }}
+{% else %}
+    {{ '<div><a href="%s">Previous</a></div>' |safe %previous_path }}
 {% endif %}
 
-{{ get_stage_html(stage_notes)|safe }}
+{# stage5 and up have new format #}
+{% if previous_path[-1] >= "4" %} {# Jinja2 can evaluate string number characters as ints #}
+    {{ get_recursive_stage(stage_notes)|safe }}
+{% else %}
+    {{ get_stage_html(stage_notes)|safe }}
+{% endif %}
 
 {% endblock %}
