@@ -44,8 +44,8 @@ def recursive(mylist, spaces = ''):
                 html += '\n' + spaces + recursive(e, spaces)
         return html + '</ul>'
 
-# Call this to generate recurisve notes for stage on the fly.
-# Allows inite number of nested unordered lists.
+# Call this to generate recursive notes for stage on the fly.
+# Allows infinite number of nested unordered lists.
 # Use with new data structure, ie stage5 and higher.
 
 def get_recursive_stage(stage_dict):
@@ -54,5 +54,4 @@ def get_recursive_stage(stage_dict):
         sec_title = '<h3>' + e['sec_title'] + '</h3>'
         sec_notes = recursive(e['notes'])
         html += '<div class="section">\n' + sec_title + '\n' + sec_notes + '\n</div>'
-    html+= '\n</div>'
-    return html
+    return html + '\n</div>'

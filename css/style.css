@@ -14,26 +14,23 @@ img {
 
 body {
 	background-color: yellow;
-	margin:50px;
+	margin: 50px;
 }
 
 h1 {
 	color: orange;
-
 }
 
 h3 {
 	color: cyan;
-
 }
 
 .section {	
 	border-radius: 15px;
-	padding:5px;
-	margin:10px;
+	padding: 5px;
+	margin: 10px;
 	background-color: red;
-	color:yellow;
-
+	color: yellow;
 }
 
 .stage {

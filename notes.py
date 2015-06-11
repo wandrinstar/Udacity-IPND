@@ -230,12 +230,12 @@ stage5 = {'title': 'APIs, Recursion,...',
               {'sec_title': 'APIs (Application Program Interface)',
                'notes': ['Basics', ['On the internet computers also communicate with each other via HTTP through APIs.',
                                     'XML and JSON are the main formats meant to be used be computers for data exchange.', ['Oher formats:', ['SOAP from Microsoft. Steve says terrible',
-                                                                                                                                 'Protocol buffers from Google',
-                                                                                                                                 'Thrift from Facebook'],
-                                                                                                               'Steve says to use well-known formats'],
+                                                                                                                                            'Protocol buffers from Google',
+                                                                                                                                            'Thrift from Facebook'],
+                                                                                                                            'Steve says to use well-known formats'],
                                     'When retrieving data from site through API:', ['1) Use proper user-agent to let them know who you are',
-                                                                        '2) Rate-limit your requests to avoid costing them too much bandwidth', ['You can use that Python timer sleep function']
-                                                                        ]
+                                                                                    '2) Rate-limit your requests to avoid costing them too much bandwidth', ['You can use that Python timer sleep function']
+                                                                                    ]
                                     ],
                          'XML', ['It is preferable to HTML cause more consistent (eg no void tags).',
                                  'Unlike HTML, you can use whatever tags you like. The communicating parties agree on them.',
@@ -253,7 +253,7 @@ stage5 = {'title': 'APIs, Recursion,...',
                {'sec_title': 'Recursion',
                 'notes': ['Recursion is defining something in terms of itself. In programing this means we call our function from inside itself.',
                           'A recursive function consists of 2 parts:', ['1) Base: something we know, definite.',
-                                                                             '2) Recursive part: something which we do not know yet but will eventually reduce to the known base.'],
+                                                                        '2) Recursive part: something which we do not know yet but will eventually reduce to the known base.'],
                           'Kind of like a relay. The higher level checks if it knows the answer. '
                           'If not, it asks the level one step lower which in turn checks and asks the next level until a level with a known value (the base) is reached. '
                           'Then the answer gets sent all the way back up the chain to the original requesting level.',

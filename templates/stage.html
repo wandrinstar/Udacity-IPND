@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div><a href="/">Home</a></div>
+    <div><a href="/">Home</a></div>
 
-{% if next_path %}
-    {{ '<div><a href="%s">Next</a></div>' |safe %next_path }}
-{% else %}
-    {{ '<br>'|safe }}
-{% endif %}
+    {% if next_path %}
+        {{ '<div><a href="%s">Next</a></div>' |safe %next_path }}
+    {% else %}
+        {{ '<br>'|safe }}
+    {% endif %}
 
-{% if previous_path[-2:] == "-1" %} {# not using None anymore cause later on use previous_path for comparison #}
-    {{ '<br>'|safe }}
-{% else %}
-    {{ '<div><a href="%s">Previous</a></div>' |safe %previous_path }}
-{% endif %}
+    {% if previous_path[-2:] == "-1" %} {# not using None anymore cause later on use previous_path for comparison #}
+        {{ '<br>'|safe }}
+    {% else %}
+        {{ '<div><a href="%s">Previous</a></div>' |safe %previous_path }}
+    {% endif %}
 
-{# stage5 and up have new format #}
-{% if previous_path[-1] >= "4" %} {# Jinja2 can evaluate string number characters as ints #}
-    {{ get_recursive_stage(stage_notes)|safe }}
-{% else %}
-    {{ get_stage_html(stage_notes)|safe }}
-{% endif %}
+    {# stage5 and up have new format #}
+    {% if previous_path[-1] >= "4" %} {# Jinja2 can evaluate string number characters as ints #}
+        {{ get_recursive_stage(stage_notes)|safe }}
+    {% else %}
+        {{ get_stage_html(stage_notes)|safe }}
+    {% endif %}
 
 {% endblock %}

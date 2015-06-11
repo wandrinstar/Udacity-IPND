@@ -21,15 +21,18 @@ from google.appengine.ext import ndb
 from html_generator import get_stage_html, get_recursive_stage
 from notes import all_stages
 
+
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
 jinja_env.globals['get_stage_html'] = get_stage_html
 jinja_env.globals['get_recursive_stage'] = get_recursive_stage
 
+
 class Comment(ndb.Model):
     content = ndb.StringProperty(indexed=False)
     date = ndb.DateTimeProperty(auto_now_add=True)
     stage = ndb.IntegerProperty(indexed=True)
+
 
 class Handler(webapp2.RequestHandler):
 
@@ -69,7 +72,7 @@ class Handler(webapp2.RequestHandler):
             comment_msg += "Error"
         path +='?'+ 'msg' + '=' + comment_msg + '#comments'
         self.redirect(path)
-        
+
 class Home(Handler):
     def get(self):
         comment_msg = self.request.get('msg')
@@ -77,6 +80,7 @@ class Home(Handler):
 
     def post(self):
         self.post_comment('home.html')
+
 
 class Stage(Handler):
 
@@ -91,6 +95,7 @@ class Stage(Handler):
         stage_num = int(path[-1])
         self.post_comment('stage.html', stage_num, path)
 
+
 app = webapp2.WSGIApplication([('/', Home),
                                ('/home', Home),
                                ('/stage0', Stage),
@@ -101,5 +106,3 @@ app = webapp2.WSGIApplication([('/', Home),
                                ('/stage5', Stage),
                                ('/stage6', Stage)
                                ], debug=True)
-
-
